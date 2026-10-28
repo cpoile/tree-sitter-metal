@@ -4,15 +4,30 @@ module.exports = grammar(CPP, {
     name: 'metal',
 
     rules: {
-        storage_class_specifier: ($, original) => choice(
-            original,
+        address_space_qualifier: _ => choice(
             'device',
             'constant',
             'thread',
             'threadgroup',
             'threadgroup_imageblock',
             'ray_data',
-            'object_data',
+            'object_data'
+        ),
+
+        coherence_qualifier: _ => choice(
+            'coherent',
+            prec(1, seq('coherent', '(', 'device', ')')),
+            prec(1, seq('device', '(', 'coherent', ')'))
+        ),
+
+        type_qualifier: ($, original) => choice(
+            original,
+            $.address_space_qualifier,
+            $.coherence_qualifier
+        ),
+
+        storage_class_specifier: ($, original) => choice(
+            original,
             'kernel',
             'vertex',
             'fragment'
@@ -32,6 +47,7 @@ module.exports = grammar(CPP, {
             'float',
             'size_t',
             'ptrdiff_t',
+            'ulong',
             'void',
             ...[8, 16, 32, 64].map(n => `int${n}_t`),
             ...[8, 16, 32, 64].map(n => `uint${n}_t`),
@@ -61,12 +77,12 @@ module.exports = grammar(CPP, {
             ...[2, 3, 4].map(n => `packed_bfloat${n}`),
             ...[2, 3, 4].map(n => `packed_float${n}`),
 
-            ...[2, 3, 4].map(n => `half{n}x2`),
-            ...[2, 3, 4].map(n => `half{n}x3`),
-            ...[2, 3, 4].map(n => `half{n}x4`),
-            ...[2, 3, 4].map(n => `float{n}x2`),
-            ...[2, 3, 4].map(n => `float{n}x3`),
-            ...[2, 3, 4].map(n => `float{n}x4`),
+            ...[2, 3, 4].map(n => `half${n}x2`),
+            ...[2, 3, 4].map(n => `half${n}x3`),
+            ...[2, 3, 4].map(n => `half${n}x4`),
+            ...[2, 3, 4].map(n => `float${n}x2`),
+            ...[2, 3, 4].map(n => `float${n}x3`),
+            ...[2, 3, 4].map(n => `float${n}x4`),
             'simdgroup_half8x8',
             'simdgroup_bfloat8x8',
             'simdgroup_float8x8'

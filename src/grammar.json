@@ -4797,34 +4797,6 @@
         },
         {
           "type": "STRING",
-          "value": "device"
-        },
-        {
-          "type": "STRING",
-          "value": "constant"
-        },
-        {
-          "type": "STRING",
-          "value": "thread"
-        },
-        {
-          "type": "STRING",
-          "value": "threadgroup"
-        },
-        {
-          "type": "STRING",
-          "value": "threadgroup_imageblock"
-        },
-        {
-          "type": "STRING",
-          "value": "ray_data"
-        },
-        {
-          "type": "STRING",
-          "value": "object_data"
-        },
-        {
-          "type": "STRING",
           "value": "kernel"
         },
         {
@@ -4844,62 +4816,75 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "const"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "const"
+                },
+                {
+                  "type": "STRING",
+                  "value": "constexpr"
+                },
+                {
+                  "type": "STRING",
+                  "value": "volatile"
+                },
+                {
+                  "type": "STRING",
+                  "value": "restrict"
+                },
+                {
+                  "type": "STRING",
+                  "value": "__restrict__"
+                },
+                {
+                  "type": "STRING",
+                  "value": "__extension__"
+                },
+                {
+                  "type": "STRING",
+                  "value": "_Atomic"
+                },
+                {
+                  "type": "STRING",
+                  "value": "_Noreturn"
+                },
+                {
+                  "type": "STRING",
+                  "value": "noreturn"
+                },
+                {
+                  "type": "STRING",
+                  "value": "_Nonnull"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "alignas_qualifier"
+                }
+              ]
             },
             {
               "type": "STRING",
-              "value": "constexpr"
+              "value": "mutable"
             },
             {
               "type": "STRING",
-              "value": "volatile"
+              "value": "constinit"
             },
             {
               "type": "STRING",
-              "value": "restrict"
-            },
-            {
-              "type": "STRING",
-              "value": "__restrict__"
-            },
-            {
-              "type": "STRING",
-              "value": "__extension__"
-            },
-            {
-              "type": "STRING",
-              "value": "_Atomic"
-            },
-            {
-              "type": "STRING",
-              "value": "_Noreturn"
-            },
-            {
-              "type": "STRING",
-              "value": "noreturn"
-            },
-            {
-              "type": "STRING",
-              "value": "_Nonnull"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "alignas_qualifier"
+              "value": "consteval"
             }
           ]
         },
         {
-          "type": "STRING",
-          "value": "mutable"
+          "type": "SYMBOL",
+          "name": "address_space_qualifier"
         },
         {
-          "type": "STRING",
-          "value": "constinit"
-        },
-        {
-          "type": "STRING",
-          "value": "consteval"
+          "type": "SYMBOL",
+          "name": "coherence_qualifier"
         }
       ]
     },
@@ -5244,6 +5229,10 @@
           },
           {
             "type": "STRING",
+            "value": "ulong"
+          },
+          {
+            "type": "STRING",
             "value": "void"
           },
           {
@@ -5568,75 +5557,75 @@
           },
           {
             "type": "STRING",
-            "value": "half{n}x2"
+            "value": "half2x2"
           },
           {
             "type": "STRING",
-            "value": "half{n}x2"
+            "value": "half3x2"
           },
           {
             "type": "STRING",
-            "value": "half{n}x2"
+            "value": "half4x2"
           },
           {
             "type": "STRING",
-            "value": "half{n}x3"
+            "value": "half2x3"
           },
           {
             "type": "STRING",
-            "value": "half{n}x3"
+            "value": "half3x3"
           },
           {
             "type": "STRING",
-            "value": "half{n}x3"
+            "value": "half4x3"
           },
           {
             "type": "STRING",
-            "value": "half{n}x4"
+            "value": "half2x4"
           },
           {
             "type": "STRING",
-            "value": "half{n}x4"
+            "value": "half3x4"
           },
           {
             "type": "STRING",
-            "value": "half{n}x4"
+            "value": "half4x4"
           },
           {
             "type": "STRING",
-            "value": "float{n}x2"
+            "value": "float2x2"
           },
           {
             "type": "STRING",
-            "value": "float{n}x2"
+            "value": "float3x2"
           },
           {
             "type": "STRING",
-            "value": "float{n}x2"
+            "value": "float4x2"
           },
           {
             "type": "STRING",
-            "value": "float{n}x3"
+            "value": "float2x3"
           },
           {
             "type": "STRING",
-            "value": "float{n}x3"
+            "value": "float3x3"
           },
           {
             "type": "STRING",
-            "value": "float{n}x3"
+            "value": "float4x3"
           },
           {
             "type": "STRING",
-            "value": "float{n}x4"
+            "value": "float2x4"
           },
           {
             "type": "STRING",
-            "value": "float{n}x4"
+            "value": "float3x4"
           },
           {
             "type": "STRING",
-            "value": "float{n}x4"
+            "value": "float4x4"
           },
           {
             "type": "STRING",
@@ -17283,6 +17272,98 @@
       },
       "named": true,
       "value": "namespace_identifier"
+    },
+    "address_space_qualifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "device"
+        },
+        {
+          "type": "STRING",
+          "value": "constant"
+        },
+        {
+          "type": "STRING",
+          "value": "thread"
+        },
+        {
+          "type": "STRING",
+          "value": "threadgroup"
+        },
+        {
+          "type": "STRING",
+          "value": "threadgroup_imageblock"
+        },
+        {
+          "type": "STRING",
+          "value": "ray_data"
+        },
+        {
+          "type": "STRING",
+          "value": "object_data"
+        }
+      ]
+    },
+    "coherence_qualifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "coherent"
+        },
+        {
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "coherent"
+              },
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "STRING",
+                "value": "device"
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "device"
+              },
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "STRING",
+                "value": "coherent"
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          }
+        }
+      ]
     }
   },
   "extras": [

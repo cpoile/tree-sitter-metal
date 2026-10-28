@@ -647,6 +647,11 @@
     "fields": {}
   },
   {
+    "type": "address_space_qualifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "alias_declaration",
     "named": true,
     "fields": {
@@ -1517,6 +1522,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "coherence_qualifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "comma_expression",
@@ -6778,7 +6788,15 @@
       "required": false,
       "types": [
         {
+          "type": "address_space_qualifier",
+          "named": true
+        },
+        {
           "type": "alignas_qualifier",
+          "named": true
+        },
+        {
+          "type": "coherence_qualifier",
           "named": true
         }
       ]
@@ -7600,6 +7618,10 @@
   },
   {
     "type": "co_yield",
+    "named": false
+  },
+  {
+    "type": "coherent",
     "named": false
   },
   {
